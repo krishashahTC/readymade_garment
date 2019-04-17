@@ -1,0 +1,7 @@
+<br>
+<div class='row offset-4'>
+  <div class='col-2'>
+    <%= label_tag :'Main Category' %>
+  </div>
+  <%= collection_select(:product, :category_id, @category, :id, :name) %>
+</div>

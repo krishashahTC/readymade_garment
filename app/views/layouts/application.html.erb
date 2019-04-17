@@ -10,6 +10,54 @@
   </head>
 
   <body>
+   
+    <% if current_user.present? && current_user.profile.role.eql?("admin") %>
+      <nav class="navbar navbar-expand-lg navbar-light bg-danger navbar-dark static-top">
+        <%= image_tag "logo2.jpeg" , height: 75%>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <%= link_to 'Home', admin_index_path, class: "nav-link"%>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Category',categories_path, class: "nav-link"%>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <%= current_user.email.split("@").first%>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <%= link_to 'My Profile', user_profile_path(current_user, current_user.profile)%><br>
+                <%= link_to 'Log Out', destroy_user_session_path, method: :delete %>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    <% elsif current_user.present? && current_user.profile.role.eql?("seller") %>
+      <nav class="navbar navbar-expand-lg navbar-light bg-secondary navbar-dark static-top">
+        <%= image_tag "logo2.jpeg" , height: 75%>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <%= link_to 'Home', sellers_path, class: "nav-link"%>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Product',products_path, class: "nav-link"%>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <%= current_user.email.split("@").first%>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <%= link_to 'My Profile', user_profile_path(current_user, current_user.profile)%><br>
+                <%= link_to 'Log Out', destroy_user_session_path, method: :delete %>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    <% end %>
     <%= yield %>
   </body>
 </html>

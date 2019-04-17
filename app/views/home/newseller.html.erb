@@ -28,14 +28,12 @@
             <br>
 
               <%= f.fields_for :profile do |profile_fields| %>
-                <div class="row">
-                  <div class="field">
-                    <%= profile_fields.text_field :first_name, class: 'form-control', placeholder: 'First Name' %>
+                <div class="field">
+                  <div class="row">
+                    <%= profile_fields.text_field :first_name, class: 'offset-1 col-6 form-control', placeholder: 'First Name' %>
+                    <%= profile_fields.select(:seller_type, options_for_select([['Retailer', 'Retailer'], ['Wholesaler', 'Wholesaler']]), class: 'col-6')%>
+                    <%= profile_fields.hidden_field :role, value: 'seller' %>
                   </div>
-                </div>
-                <div class="offset-4 row">
-                  <%= profile_fields.select(:seller_type, options_for_select([['Retailer', 'Retailer'], ['Wholesaler', 'Wholesaler']]))%>
-                  <%= profile_fields.hidden_field :role, value: 'seller' %>
                 </div>
               <% end %>
 

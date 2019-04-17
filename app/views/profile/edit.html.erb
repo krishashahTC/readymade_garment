@@ -1,0 +1,78 @@
+<br>
+<br>
+<div class=' col-md-9 offset-1 border'>
+<br>
+  <%= form_with(model: [@user, @user.profile]) do |form| %>
+    <div class="container">
+      <div class="form-group row">
+        <div class='col'>
+          <h3>Personal Details</h3>
+					<div class="row">
+						Email: 	<%= current_user.email%>
+					</div>
+					<br>
+          <div class='row'>
+            <div class='col-md-6'>
+              <%= form.text_field :first_name,class: 'form-control', placeholder: 'first_name'%>
+						</div>
+					</div>
+					<br>
+					<div class='row'>
+						<div class='col-md-6'>
+							<%= form.text_field :last_name,class: 'form-control', placeholder: 'last_name' %>
+						</div>
+					</div>
+          <br>
+          <div class='row'>
+            <div class="custom-control custom-radio custom-control-inline">
+              <%= form.radio_button(:gender, "male")%>
+              <%= form.label(:gender_male, "Male") %>
+              <%= form.radio_button(:gender, "female") %>
+              <%= form.label(:gender_female, "Female") %>
+              <%= form.radio_button(:gender, "other") %>
+              <%= form.label(:gender_other, "Other") %>
+            </div>
+          </div>
+        </div>
+        <div class='col'>
+          <h3>Contact Details</h3>
+          <div class='row'>
+            <div class='col'>
+              <%= form.text_field :address,class: 'form-control', placeholder: 'address' %>
+            </div>
+          </div>
+					<br>
+					<div class='row'>
+            <div class='col'>
+              <%= form.text_field :country, class: 'form-control', placeholder: 'country' %>
+            </div>
+					</div>
+					<br>
+          <div class='row'>
+            <div class='col-6'>
+              <%= form.text_field :state, class: 'form-control', placeholder: 'state' %>
+            </div>
+            <div class='col-6'>
+              <%= form.text_field :city, class: 'form-control', placeholder: 'city' %>
+            </div>
+          </div>
+          <br>
+          <div class='row'>
+          <div class='col'>
+            <%= form.number_field :phone_number, class: 'form-control', placeholder: 'phone number' %>
+          </div>
+        </div>
+        </div>
+      </div>
+      <div class='row'>
+        <div class='col'>
+          <%= form.submit :Update, class: 'btn btn-primary offset-10'%>
+        </div>
+        <div class='col'>
+          <%= link_to "Cancel" , user_profile_path(@user), class: 'btn btn-primary'%>
+        </div>
+      </div>
+      <br>
+    </div>
+  <% end %>
+</div>

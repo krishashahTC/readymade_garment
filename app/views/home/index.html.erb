@@ -6,9 +6,17 @@
     <% if current_user.present?%>
       <%= link_to 'Log Out', destroy_user_session_path, method: :delete %>
     <% else %>
-      <%= link_to 'Customer Registraion', new_user_registration_path %>
-      <%= link_to 'Seller Registraion',seller_path %>
-      <%#= link_to 'Login', user_session_path %>
+      <%= link_to 'Login', user_session_path %>
+      <div class="dropdown show offset-9">
+        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         Registr As
+        </a>
+    
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          <%= link_to 'Customer', new_user_registration_path %><br>
+          <%= link_to 'Seller',newseller_path%>
+        </div>
+      </div>
     <% end %>
     
   </div>

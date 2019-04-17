@@ -1,0 +1,31 @@
+<br>
+<center><h2>List of Categories </h2></center>
+<div class='col-md-6 offset-md-3'>
+  <table class= 'table table-bordered'>
+    <tr>
+      <th>Category</th>
+      <th colspan="4">Oprations</th>
+    </tr>
+
+    <% @categories.each do |category| %>
+      <tr>
+        <td><%= category.name %></td>
+        <td><%= link_to 'List Of Sub Category',category_sub_categories_path(category)%></td>
+        <td><%= link_to 'Add Sub Category', new_category_sub_category_path(category) %></td>
+        <td><%= link_to 'Edit', edit_category_path(category), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window'}%></td>
+        <td><%= link_to 'Destroy', category_path(category),
+                method: :delete,
+                data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+<div class='col-md-7 offset-md-4'>
+  <%= link_to 'Add new Categoty', new_category_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'btn btn-primary'}  %>
+  <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content"></div>
+    </div>
+  </div>
+  <%= link_to 'Home ', admin_index_path, class: 'btn btn-primary'%>
+</div>

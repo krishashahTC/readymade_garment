@@ -1,0 +1,31 @@
+<br>
+<div class='row offset-5'>
+  <h5>Category: </h5>
+  <%= @category.name %>
+</div>
+<div class= 'col-md-6 offset-md-3'>
+  <%= form_with(model: [@category, @sub_category]) do |form| %>
+    
+    <div class='row offset-4 form-group'>
+      <div class='dropdown'>
+        <%= form.select(:gender, options_for_select([['Male', 'Male'], ['Female', 'Female'], ['Kids', 'Kids']])) %>
+      </div>
+    </div>
+    <div class='row'>
+      <%= form.label :name, 'Enter Sub Category', class: 'col-4' %>
+      <%= form.text_field :name,required: true,  class: 'col-6 form-control' %>
+    </div>
+    <br>
+    <div class='row'>
+      <%= form.label :description, 'Enter Description', class: 'col-4' %>
+      <%= form.text_field :description,required: true,  class: 'col-6 form-control' %>
+    </div>
+    
+    <br>
+    <br>
+    <div class= 'col-md-6 offset-md-3'>
+    <%= form.submit :Submit, class: 'btn btn-primary' %>
+    <%= link_to 'Back',categories_path, class: 'btn btn-primary'%>
+    </div>
+  <% end %>
+</div>
