@@ -1,0 +1,29 @@
+<br>
+<center><h2>List of Colors </h2></center>
+<div class='col-md-6 offset-md-3'>
+  <table class= 'table table-bordered'>
+    <tr>
+      <th>Colors</th>
+      <th colspan="2">Oprations</th>
+    </tr>
+
+    <% @colors.each do |color| %>
+      <tr>
+        <td><%= color.name %></td>
+        <td><%= link_to 'Edit', edit_color_path(color), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window'}%></td>
+        <td><%= link_to 'Destroy', color_path(color),
+                method: :delete,
+                data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+<div class='col-md-7 offset-md-4'>
+  <%= link_to 'Add new Color', new_color_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'btn btn-primary'}  %>
+  <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content"></div>
+    </div>
+  </div>
+  <%= link_to 'Home ', admin_index_path, class: 'btn btn-primary'%>
+</div>

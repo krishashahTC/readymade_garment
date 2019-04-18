@@ -4,11 +4,13 @@
   <table class= 'table table-bordered'>
     <tr>
       <th>Sellers</th>
+      <th>Type</th>
     </tr>
 
     <% @sellers.each do |seller| %>
       <tr>
         <td><%= seller.first_name %></td>
+        <td><%= seller.seller_type%></td>
       </tr>
     <% end %>
   </table>

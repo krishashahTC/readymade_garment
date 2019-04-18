@@ -2,15 +2,11 @@
   <button type="button" class="close" data-dismiss="modal">x</button>
 </div>
 
-<%= form_for @category do |form| %>
+<%= form_for @color do |form| %>
   <div class="modal-body">
     <div class='row'>
       <%= form.label :Name, class: 'col-3' %>
-      <%= form.text_field :name, class: 'col-7 form-control'%>
-    </div>
-    <div class='row'>
-      <%= form.label :Description, class: 'col-3' %>
-      <%= form.text_area :description, class: ' col-7 form-control'%>
+      <%= form.text_field :name, class: 'col-7 form-control', required: :true%>
     </div>
   </div>
   <div class="modal-footer">

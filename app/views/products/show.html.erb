@@ -1,0 +1,51 @@
+<div class="container">
+  <br>
+  <div class=' col-md-9 offset-1 border'>
+   <br>
+    <div class="container">
+      <center><h3>Product Details</h3></center>
+      <div class="form-group row">
+        <div class='col'>
+          <div class='row'>
+            Product Name: <%= @product.name%>
+          </div>
+          <div class='row'>
+            Price: <%= @product.price %>
+          </div>
+          <div class='row'>
+            Quantity: <%= @product.quantity%>
+          </div>
+        </div>
+        <div class='col'>
+          <div class='row'>
+            Colors: <% @product.colors.each do |color|%>
+                      <ul>
+                        <li><%= color.name%></li>
+                      </ul>
+                    <% end %>
+          </div>
+          <div class='row'>
+            Size: <% @product.sizes.each do |size| %>
+                    <ul>
+                      <li><%= size.measurements%></li>
+                    </ul>
+                  <% end %>
+          </div>
+        </div>
+        <br>
+        <div id="aniimated-thumbnials">
+          <% @product.images.each do |image| %>
+            <%= link_to rails_blob_path(image, dispotion: "attachment") do %>
+              <%= image_tag url_for(image), { height: '100px'} %>  
+            <% end %>
+          <% end %>
+        </div>
+
+      </div>
+      <div class='row'>
+        <%= link_to 'Back', products_path, class: 'btn btn-primary offset-3' %>
+      </div>
+      <br>
+    </div>
+  </div>
+</div>

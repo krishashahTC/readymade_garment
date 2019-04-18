@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   end
 
   resources :products
+  resources :colors
+  resources :size
   get '/newseller', to: 'home#newseller'
  
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

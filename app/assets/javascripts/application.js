@@ -12,10 +12,10 @@
 //
 //= require rails-ujs
 //= require jquery3
+//= require jquery.validate
 //= require popper
 //= require jquery_nested_form
 //= require activestorage
 //= require turbolinks
 //= require bootstrap
 //= require_tree .
-

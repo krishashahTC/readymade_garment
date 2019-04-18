@@ -36,6 +36,7 @@ gem 'popper_js'
 gem 'pry'
 gem 'devise'
 gem "nested_form"
+gem 'jquery-validation-rails'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

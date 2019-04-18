@@ -1,2 +1,15 @@
+
 $("#modal-window").find(".modal-content").html("<%= j (render 'form') %>");
 $("#modal-window").modal();
+
+$("#modal-body").validate({
+  messages: {
+  "category[name]":{
+    required: true
+  },
+  "category[description]":{
+      required: true
+  }
+  },
+});
+

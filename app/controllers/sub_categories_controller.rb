@@ -1,6 +1,7 @@
 class SubCategoriesController < ApplicationController
 
   before_action :find_MainCategory
+  before_action :find_sub_category, only: [:edit, :update, :destroy]
   def index
     @sub_categories = @category.sub_categories
   end
@@ -15,17 +16,14 @@ class SubCategoriesController < ApplicationController
   end
 
   def edit
-    @sub_category = SubCategory.find(params[:id])
   end
 
   def update
-    @sub_category = SubCategory.find(params[:id])
     @sub_category.update(subcategory_params)
     redirect_to category_sub_categories_path(@category)
   end
 
   def destroy
-    @sub_category = SubCategory.find(params[:id])
     @sub_category.destroy
     redirect_to category_sub_categories_path(@category)
   end
@@ -38,6 +36,10 @@ class SubCategoriesController < ApplicationController
 
   def subcategory_params
     params.require(:sub_category).permit(:name, :description, :gender)
+  end
+
+  def find_sub_category
+    @sub_category = SubCategory.find(params[:id])
   end
 
 end
