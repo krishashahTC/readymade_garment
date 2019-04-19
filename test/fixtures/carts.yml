@@ -2,10 +2,12 @@
 
 one:
   user: one
-  category: one
-  sub_category: one
+  product: one
+  qantity: 1
+  price: 1
 
 two:
   user: two
-  category: two
-  sub_category: two
+  product: two
+  qantity: 1
+  price: 1

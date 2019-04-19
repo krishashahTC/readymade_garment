@@ -1,15 +1,13 @@
-
 $("#modal-window").find(".modal-content").html("<%= j (render 'form') %>");
 $("#modal-window").modal();
 
-$("#modal-body").validate({
-  messages: {
-  "category[name]":{
-    required: true
-  },
-  "category[description]":{
-      required: true
-  }
-  },
+$("#new_category").validate({
+    rules: {
+      "category[name]": "required",
+      "category[description]": "required"
+    },
+    messages: {
+      "category[name]": 'please enter name',
+      "category[description]": 'please enter description'
+    }
 });
-

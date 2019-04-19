@@ -4,6 +4,8 @@ class CreateProducts < ActiveRecord::Migration[5.2]
       t.string :name
       t.integer :price
       t.integer :quantity
+      t.references :user, foreign_key: true
+      t.references :category, foreign_key: true
       t.references :sub_category, foreign_key: true
 
       t.timestamps

@@ -3,12 +3,28 @@
 <%= form_for @product do |form| %>
   <div class="container offset-2">
     <div class='row'>
-      <div class='col-3'>
-        <%= label_tag :'Main Category' %>
+      <div class='col-2'>
+        <%= label_tag :'Main Category'%>
       </div>
-      <%= collection_select(:product, :id, @category, :id, :name) %>
-      <%= form.collection_select(:sub_category_id, @sub_categories, :id, :name)%>
+      <div class='col-6'>
+        <%= collection_select :product, :category_id, @category.order(:name),
+                              :id, :name, include_blank: "Select Category" %><br>
+      </div>
     </div>
+    <div class='row'>
+      <div class='col-2'>
+        <%= label_tag :'Sub Category' %>
+      </div>
+      <div class='col-6'>
+        <%= form.grouped_collection_select :sub_category_id, @category.order(:name),
+                                           :sub_categories, :name, :id, :name, include_blank: "Select SubCategory" %>
+      </div>
+      <div>
+      </div>
+    </div>
+
+
+    
     <br>
     <div class='row'>
       <div class='col-4'>

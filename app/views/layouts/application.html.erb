@@ -68,7 +68,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-warning navbar-dark static-top">
       <div class="container">
         <a class="navbar-brand">
-          <%= image_tag 'image2.png', height: 50%>
+          <%= image_tag 'logo2.jpeg', height: 50, width: 120%>
         </a>
         <% if current_user.present?%>
           <%= link_to 'Log Out', destroy_user_session_path, method: :delete %>

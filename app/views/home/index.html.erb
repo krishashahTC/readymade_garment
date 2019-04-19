@@ -1,28 +1,28 @@
 <br>
-<div class= 'row'>
-  <div class="card" style="width: 15rem;">
-    <%= image_tag "jeans1.jpg", height: 150, width: 150%>
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-  </div>
-  
-  <div class="card" style="width: 15rem;">
-    <%= image_tag "jeans2.jpg", height: 150, width: 150%>
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-  </div>
-  <div class="card" style="width: 15rem;">
-    <%= image_tag "jeans3.jpg", height: 150, width: 150%>
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
+<div class= "container">
+  <div class= 'row'>
+    <% @products.each do |product| %>
+      <div class="card" style="width: 15rem;">
+        <%= image_tag product.images.first, height: 150, width: 240%>
+        <div class="card-body">
+          <h5 class="card-title"><%= product.name %></h5>
+          <div class='row'>
+            <div class='col-6'>
+              Price<%= product.price%>
+            </div>
+            <div class='col-6'>
+              <%= number_field :cart, :quantity, class: 'form-control', placeholder: '0'%>
+            </div>
+          </div>
+          <br>
+          <%= link_to 'Details', product_path(product), class: 'btn btn-primary' %>
+          <% if current_user.present?%>
+            <%= link_to :'Add to Cart', new_cart_path, class: 'btn btn-primary' %>
+          <% else %>
+            <%= link_to 'Add to Cart', user_session_path, class: 'btn btn-primary' %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>

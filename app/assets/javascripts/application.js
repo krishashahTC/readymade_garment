@@ -13,6 +13,7 @@
 //= require rails-ujs
 //= require jquery3
 //= require jquery.validate
+//= require jquery.validate.additional-methods
 //= require popper
 //= require jquery_nested_form
 //= require activestorage
