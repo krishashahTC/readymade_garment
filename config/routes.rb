@@ -14,10 +14,19 @@ Rails.application.routes.draw do
     resources :sub_categories
   end
 
-  resources :products
+  resources :user do
+    resources :products do
+      resources :carts
+    end
+  end
+
+  resources :products do
+    get '/addproduct', to: 'carts#addproduct'
+  end
+  
   resources :colors
   resources :size
-  resources :carts
+  
   get '/newseller', to: 'home#newseller'
  
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

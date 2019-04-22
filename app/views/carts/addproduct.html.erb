@@ -1,0 +1,33 @@
+<br>
+<div class= "container">
+  <div class='row'>
+    <div class='col'>
+      <% @product.images.each do |image| %>
+        <%= image_tag image, height: 250, width: 230%>
+      <% end %>
+    </div>
+    <div class='col'>
+      <div class='row'>
+        Product Name : <%= @product.name %>
+      </div>
+      <div class='row'>
+        Price : <%= @product.price%>
+      </div>
+      <div class='row'>
+        Colors: <% @product.colors.each do |color|%>
+                  <ul>
+                    <li><%= color.name%></li>
+                  </ul>
+                <% end %>
+      </div>
+      <div class='row'>
+        Size: <% @product.sizes.each do |size| %>
+                <ul>
+                  <li><%= size.measurements%></li>
+                </ul>
+              <% end %>
+      </div>
+      <%= link_to 'Add to Cart', user_session_path, class: 'btn btn-primary' %>
+    </div>
+  </div>
+</div>

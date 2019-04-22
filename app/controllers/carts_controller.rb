@@ -5,19 +5,29 @@ class CartsController < ApplicationController
   end
 
   def new
+    @product = Product.find(params[:product_id])
     @cart = Cart.new
   end
 
   def create
-    @user = current_user
-    @cart = @user.carts.create(cart_params)
-    redirect_to root_path
+    @product = Product.find(params[:product_id])
+    @cart = @product.carts.new(cart_params)
+    @cart.user_id = current_user.id
+    if @cart.save
+      redirect_to root_path
+    else
+      render 'new'
+    end
+  end
+
+  def addproduct
+    @product = Product.find(params[:product_id])
   end
 
   private
 
   def cart_params
-    params.require(:cart).permit(:price, :quantity)
+    params.require(:cart).permit(:quantity)
   end
 
 end

@@ -1,4 +1,59 @@
-<%= form_for @cart do |form| %>
-	<%= form.submit%>
-<% end %>
-<%= quantity %>
+<br>
+<div class= "container">
+  <%= form_for([current_user, @product, @cart]) do |form| %>
+    <% if @cart.errors.any? %>
+     <div id="error_explanation">
+        <h2>
+          <%= pluralize(@cart.errors.count, "error") %> prohibited
+          this product from being saved:
+        </h2>
+        <ul>
+          <% @cart.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+         <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class='row'>
+      <div class='col'>
+        <% @product.images.each do |image| %>
+          <%= image_tag image, height: 250, width: 230%>
+        <% end %>
+      </div>
+      <div class='col'>
+          <div class='row'>
+            Product Name : <%= @product.name %>
+          </div>
+          <div class='row'>
+            Price : <%= @product.price%>
+          </div>
+          <div class='row'>
+            Colors: <% @product.colors.each do |color|%>
+                      <ul>
+                        <li><%= color.name%></li>
+                      </ul>
+                    <% end %>
+          </div>
+          <div class='row'>
+            Size: <% @product.sizes.each do |size| %>
+                    <ul>
+                      <li><%= size.measurements%></li>
+                    </ul>
+                  <% end %>
+          </div>
+          <div class='row'>
+            <%= form.number_field :quantity, class: 'col-4 form-control'%>
+          </div>
+          <div class='row'>
+            <%= form.text_field :price, class: 'col-4 form-control'%>
+          </div>
+          <br>
+          <% if current_user.present?%>
+            <%= form.submit :'Add to Cart', class: 'btn btn-primary' %>
+          <% else %>
+            <%= link_to 'Add to Cart', user_session_path, class: 'btn btn-primary' %>
+          <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

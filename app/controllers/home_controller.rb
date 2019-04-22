@@ -8,4 +8,11 @@ class HomeController < ApplicationController
   def newseller
   end
 
+  def show
+    @product = Product.find(params[:product_id])
+  end
+
+  def addproduct
+    @product = Product.find(params[:product_id])
+  end
 end

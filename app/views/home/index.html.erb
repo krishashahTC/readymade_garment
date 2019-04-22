@@ -1,26 +1,24 @@
 <br>
 <div class= "container">
-  <div class= 'row'>
+  <div class="row">
     <% @products.each do |product| %>
-      <div class="card" style="width: 15rem;">
-        <%= image_tag product.images.first, height: 150, width: 240%>
-        <div class="card-body">
-          <h5 class="card-title"><%= product.name %></h5>
-          <div class='row'>
-            <div class='col-6'>
-              Price<%= product.price%>
+      <div class="col-sm-3">
+        <div class="card"  style="width: 15rem;">
+          <%= image_tag product.images.first, height: 150, width: 238%>
+          <div class="card-body">
+            <h5 class="card-title"><%= product.name %></h5>
+            <div class='row'>
+              <div class='col-6'>
+                Price<%= product.price%>
+              </div>
             </div>
-            <div class='col-6'>
-              <%= number_field :cart, :quantity, class: 'form-control', placeholder: '0'%>
-            </div>
+            <br>
+            <% if current_user.present?%>
+              <%= link_to 'Details', new_user_product_cart_path(current_user,product), class: 'btn btn-primary' %>
+            <% else %>
+              <%= link_to 'Details', product_addproduct_path(product), class: 'btn btn-primary' %>
+            <% end %>
           </div>
-          <br>
-          <%= link_to 'Details', product_path(product), class: 'btn btn-primary' %>
-          <% if current_user.present?%>
-            <%= link_to :'Add to Cart', new_cart_path, class: 'btn btn-primary' %>
-          <% else %>
-            <%= link_to 'Add to Cart', user_session_path, class: 'btn btn-primary' %>
-          <% end %>
         </div>
       </div>
     <% end %>
